@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+
+
+index_cache/*
+password.R
+index.md
