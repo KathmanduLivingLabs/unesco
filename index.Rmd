@@ -1,0 +1,77 @@
+---
+title: "UNESCO Submission Tracking"
+date: "generated on `r date()`"
+output: html_document
+---
+
+
+```{r, echo=FALSE, message=FALSE}
+library(RCurl)
+library(dplyr)
+library(stringr)
+kathmandu = na.omit(read.csv("kathmandu.csv", na.strings = "")) #read csv assigning all the empty string as NA
+kathmandu$district = "Kathmandu"
+patan = na.omit(read.csv("patan.csv", na.strings = ""))
+patan$district = "Lalitpur"
+bhaktapur = na.omit(read.csv("bhaktapur.csv", na.strings = ""))
+bhaktapur$district = "Bhaktapur"
+palace = read.csv("palace.csv", na.strings = "")
+valley = read.csv("valley.csv",na.strings = "")
+pruscha = na.omit(rbind(kathmandu, bhaktapur, patan, valley, palace)) # merge all the dataframe by removing the empty rows
+pruscha = rename(pruscha, id = S..No.)
+pruscha$id = toupper(gsub("[^A-Za-z0-9.]","", pruscha$id))
+
+onaCSVStream = getURI("http://ona.io/api/v1/data/49501.csv")
+onadata = read.csv(textConnection(onaCSVStream), na.strings="n/a")
+onaNA = filter(onadata, is.na(site_id))
+onaNotNa = filter (onadata, !(is.na(site_id)))
+onaNotNa$site_id = gsub(".*/","", onaNotNa$site_id)
+onaNotNa$site_id = gsub("[^A-Za-z0-9.]","", onaNotNa$site_id)
+onaNotNa$site_id = toupper(gsub("Garmin*","", onaNotNa$site_id))
+onaKathmandu = filter (onaNotNa , district == "Kathmandu")
+onaLalitpur = filter (onaNotNa, district == "Lalitpur")
+onaBhaktapur = filter (onaNotNa, district == "Bhaktapur")
+onaOtherDistrict = filter (onaNotNa, district == "other")
+
+match = merge(onaNotNa, pruscha, by.x = "site_id", by.y = "id", all.x = F)
+matchSummary = match %>% group_by(district.y) %>% summarise(Matched = n())
+pruschaSummary = pruscha %>% group_by(district) %>% summarise(Total = n())
+matchSummary = merge(matchSummary, pruschaSummary, by.x = "district.y", by.y = "district", all.y = T)
+matchSummary$Matched[is.na(matchSummary$Matched)] = 0
+matchSummary$Completion = ((matchSummary$Matched/matchSummary$Total)*100)
+```
+
+##Percentage Completed According to Pruscha Dataset
+```{r, echo=FALSE, message=FALSE}
+knitr::kable(matchSummary,col.names = c("District", "Accesed","Total Number in Pruscha","Percentage Complete"))
+```
+
+```{r, echo=FALSE, message=FALSE}
+onaUnmatch = filter(onaNotNa, ! onaNotNa$site_id %in% match$site_id)
+pruschaRemaning = filter (pruscha, ! pruscha$id %in% match$site_id)
+```
+
+**Note:** `r nrow(onaNA)` entries are submitted without any site ID.
+
+##List of Sites Yet to be Assesed
+
+###Kathmandu
+```{r, echo=FALSE, message=FALSE}
+knitr::kable(filter (pruschaRemaning , district == "Kathmandu"), col.names = c("ID", "Temple Name","Tole Name","District"))
+```
+
+###Lalitpur
+```{r, echo=FALSE, message=FALSE}
+knitr::kable(filter (pruschaRemaning , district == "Lalitpur"),col.names = c("ID", "Temple Name","Tole Name","District"))
+```
+
+###Bhaktapur
+```{r, echo=FALSE, message=FALSE}
+knitr::kable(filter (pruschaRemaning , district == "Bhaktapur"),col.names = c("ID", "Temple Name","Tole Name","District"))
+```
+
+##List of ID's in Ona Survey Not Found in Pruscha Inventory
+```{r, echo=FALSE, message=FALSE}
+
+knitr::kable(data.frame(onaUnmatch$site_id, onaUnmatch$tole_name, onaUnmatch$temple_name), col.names = c("ID", "Tole Name", "Temple Name"))
+```
