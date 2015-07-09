@@ -1,7 +1,6 @@
 #!/bin/bash
 cd /home/aakash/unesco-tracking/
 
-PATH=$HOME/.cabal/bin:$PATH
 
 log=/home/aakash/unesco-tracking/log.txt 
 projLoc=/home/aakash/unesco-tracking/index.Rmd
