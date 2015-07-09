@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /home/aakash/unesco-tracking/
 
 PATH=$HOME/.cabal/bin:$PATH
 
