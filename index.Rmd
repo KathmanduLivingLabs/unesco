@@ -94,8 +94,8 @@ matchSummary$Completion = ((matchSummary$Matched/matchSummary$Total)*100)
 
 <!-- CSS
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="normalize.css">
+<link rel="stylesheet" href="skeleton.css">
 <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 <!-- Favicon
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
