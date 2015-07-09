@@ -62,7 +62,7 @@ img {
 
 <div id="header">
 <h1 class="title">UNESCO Submission Tracking</h1>
-<h4 class="date"><em>generated on Thu Jul 9 12:39:30 2015</em></h4>
+<h4 class="date"><em>generated on Thu Jul 9 12:40:53 2015</em></h4>
 </div>
 
 
@@ -6209,7 +6209,7 @@ Bhaktapur
 <h4>
 List of IDs in Ona Survey Not Found in Pruscha Inventory
 </h4>
-<table class="data_table">
+<table class="data_table_not_included">
  <thead>
   <tr>
    <th style="text-align:left;"> 
@@ -10720,7 +10720,13 @@ $('.data_table').DataTable({
 "bLengthChange": false,
 "iDisplayLength": 30,
 });
-$("div.toolbar").html('Kathmandu');
+
+$('.data_table_not_included').DataTable({
+"bFilter": true,
+"bLengthChange": false,
+"iDisplayLength": 30,
+});
+
 });
 
 
