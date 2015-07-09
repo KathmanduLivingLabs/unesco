@@ -1,7 +1,9 @@
 ---
 title: "UNESCO Submission Tracking"
 date: "generated on `r date()`"
-output: html_document
+output: 
+  html_document:
+    css: style.css 
 ---
 
 ```{r, echo=FALSE, message=FALSE}
@@ -94,8 +96,8 @@ matchSummary$Completion = ((matchSummary$Matched/matchSummary$Total)*100)
 
 <!-- CSS
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/skeleton.css">
+<!--<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">-->
 <link rel="stylesheet" href="css/jquery.dataTables.css">
 <!-- Favicon
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
