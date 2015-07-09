@@ -5,7 +5,7 @@ PATH=$HOME/.cabal/bin:$PATH
 log=/home/aakash/unesco-tracking/log.txt 
 projLoc=/home/aakash/unesco-tracking/index.Rmd
 
-echo "rmarkdown::render($projLoc)" | R --vanilla >$log
+echo "rmarkdown::render('$projLoc')" | R --vanilla >$log
 
 git config --global credential.helper store >>$log
 

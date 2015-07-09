@@ -17,4 +17,73 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> rmarkdown::render(/home/aakash/unesco-tracking/index.Rmd)
+> rmarkdown::render('/home/aakash/unesco-tracking/index.Rmd')
+  |                                                                         |                                                                 |   0%  |                                                                         |....                                                             |   7%
+   inline R code fragments
+
+  |                                                                         |.........                                                        |  13%
+label: unnamed-chunk-1 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |.............                                                    |  20%
+  ordinary text without R code
+
+  |                                                                         |.................                                                |  27%
+label: unnamed-chunk-2 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |......................                                           |  33%
+  ordinary text without R code
+
+  |                                                                         |..........................                                       |  40%
+label: unnamed-chunk-3 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |..............................                                   |  47%
+   inline R code fragments
+
+  |                                                                         |...................................                              |  53%
+label: unnamed-chunk-4 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |.......................................                          |  60%
+  ordinary text without R code
+
+  |                                                                         |...........................................                      |  67%
+label: unnamed-chunk-5 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |................................................                 |  73%
+  ordinary text without R code
+
+  |                                                                         |....................................................             |  80%
+label: unnamed-chunk-6 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |........................................................         |  87%
+  ordinary text without R code
+
+  |                                                                         |.............................................................    |  93%
+label: unnamed-chunk-7 (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ message: logi FALSE
+
+  |                                                                         |.................................................................| 100%
+  ordinary text without R code
+
+
+/home/aakash/.cabal/bin/pandoc index.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output index.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /usr/local/lib/R/site-library/rmarkdown/rmd/h/default.html --variable 'theme:bootstrap' --include-in-header /tmp/RtmpAbrcJ0/rmarkdown-str770fe9d75b6.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --no-highlight --variable highlightjs=/usr/local/lib/R/site-library/rmarkdown/rmd/h/highlight 
+> 
