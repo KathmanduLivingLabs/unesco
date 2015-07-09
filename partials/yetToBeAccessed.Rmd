@@ -1,0 +1,23 @@
+##List of Sites Yet to be Assesed
+
+###Kathmandu
+``{r, echo=FALSE, message=FALSE}
+knitr::kable(filter (pruschaRemaning , district == "Kathmandu"), col.names = c("ID", "Temple Name","Tole Name","District"))
+``
+
+###Lalitpur
+``{r, echo=FALSE, message=FALSE}
+knitr::kable(filter (pruschaRemaning , district == "Lalitpur"),col.names = c("ID", "Temple Name","Tole Name","District"))
+``
+
+###Bhaktapur
+``{r, echo=FALSE, message=FALSE}
+knitr::kable(filter (pruschaRemaning , district == "Bhaktapur"),col.names = c("ID", "Temple Name","Tole Name","District"))
+``
+
+##List of ID's in Ona Survey Not Found in Pruscha Inventory
+``{r, echo=FALSE, message=FALSE}
+
+knitr::kable(data.frame(onaUnmatch$site_id, onaUnmatch$tole_name, onaUnmatch$temple_name), col.names = c("ID", "Tole Name", "Temple Name"))
+``
+`

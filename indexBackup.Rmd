@@ -1,9 +1,3 @@
----
-title: "UNESCO Submission Tracking"
-date: "generated on `r date()`"
-output: html_document
----
-
 ```{r, echo=FALSE, message=FALSE}
 library(RCurl)
 library(dplyr)
@@ -47,34 +41,35 @@ matchSummary$Completion = ((matchSummary$Matched/matchSummary$Total)*100)
 <html lang="en">
 <head>
 
-<!-- Basic Page Needs
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<meta charset="utf-8">
-<title>Your page title here :)</title>
-<meta name="description" content="">
-<meta name="author" content="">
-
-<!-- Mobile Specific Metas
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- FONT
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
-<!-- CSS
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/skeleton.css">
-<link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">	
-<!-- Favicon
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<!-- <link rel="icon" type="image/png" href="images/favicon.png">-->
-
+  <!-- Basic Page Needs
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <meta charset="utf-8">
+        <title>Your page title here :)</title>
+	  <meta name="description" content="">
+	    <meta name="author" content="">
+	    
+  <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+  <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+      
+  <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">	
+  <!-- Favicon
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+     <!-- <link rel="icon" type="image/png" href="images/favicon.png">-->
+      
 </head>
 <body ng-app="UNESCOApp">
-<div id="all_container" class="container" ng-controller="mainCtrl">
-<!-- <h2 class="title">UNESCO Submission Tracking</h2> -->
+<div class="container" ng-controller="mainCtrl">
+<h2 class="title">UNESCO Submission Tracking</h2>
+***
 <div>
 ####Percentage Completed According to Pruscha Dataset
 ```{r, echo=FALSE, message=FALSE}
@@ -89,29 +84,39 @@ pruschaRemaning = filter (pruscha, ! pruscha$id %in% match$site_id)
 <div class="six columns">
 **Note:** `r nrow(onaNA)` entries are submitted without any site ID.
 </div>
-
+<div class="six columns">
+<span class="u-pull-right"><ul><li>generated on `r date()`</li></ul></span>
+</div>
+</div>
+<center>
+<div style="margin-top:70px">
+<a ng-click="show(false)" class="button button-primary u-full-width" style="width:600px">List of Sites Yet to be Assesed</a>
+</div>
+</center>
 </div>
 
-</div>
 
 
-
-<div id="list_div" style="margin-top: 50px">
-####List of Sites Yet to be Assesed
+<div ng-hide="tab">
+##List of Sites Yet to be Assesed
 
 
 <div class="row">
 
-<div class="four columns">
-<a id="kathmandu_btn" class="button" href="#list_div" ng-click="showKathmandu()" onClick="changeClass">Kathmandu</a>
+<div class="three columns">
+<a class="button" href="#" ng-click="showKathmandu()">Kathmandu</a>
 </div>
 
-<div class="four columns">
-<a id="lalitpur_btn" class="button" href="#list_div" ng-click="showLalitpur()">Lalitpur</a>
+<div class="three columns">
+<a class="button" href="#" ng-click="showLalitpur()">Lalitpur</a>
 </div>
 
-<div class="four columns">
-<a id="bhaktapur_btn" class="button" href="#list_div" ng-click="showBhaktapur()">Bhaktapur</a>
+<div class="three columns">
+<a class="button" href="#" ng-click="showBhaktapur()">Bhaktapur</a>
+</div>
+
+<div class="three columns">
+<a class="button" href="#" ng-click="showOthers()">Others</a>
 </div>
 
 </div>
@@ -122,7 +127,7 @@ pruschaRemaning = filter (pruscha, ! pruscha$id %in% match$site_id)
 
 
 <div ng-show="kathmandu">
-<!-- <h3>Kathmandu</h3> -->
+<h3>Kathmandu</h3>
 
 ```{r, echo=FALSE, message=FALSE}
 knitr::kable(filter (pruschaRemaning , district == "Kathmandu"), 'html', table.attr='class="data_table"', col.names = c("ID", "Temple Name","Tole Name","District"))
@@ -131,21 +136,20 @@ knitr::kable(filter (pruschaRemaning , district == "Kathmandu"), 'html', table.a
 
 </div>
 <div ng-show="lalitpur">
-<!-- <h3>Lalitpur</h3> -->
+<h3>Lalitpur</h3>
 ```{r, echo=FALSE, message=FALSE}
 knitr::kable(filter (pruschaRemaning , district == "Lalitpur"), 'html', table.attr='class="data_table"', col.names = c("ID", "Temple Name","Tole Name","District"))
 ```
 
 </div>
 <div ng-show="bhaktapur">
-<!-- <h3>Bhaktapur</h3> -->
+<h3>Bhaktapur</h3>
 ```{r, echo=FALSE, message=FALSE}
 knitr::kable(filter (pruschaRemaning , district == "Bhaktapur"), 'html', table.attr='class="data_table"', col.names = c("ID", "Temple Name","Tole Name","District"))
 ```
-
 </div>
-<div style="margin-top:80px; margin-bottom: 20px">
-<h4>List of ID's in Ona Survey Not Found in Pruscha Inventory</h4>
+<div ng-show="others">
+<h5>List of ID's in Ona Survey Not Found in Pruscha Inventory</h5>
 ```{r, echo=FALSE, message=FALSE}
 knitr::kable(data.frame(onaUnmatch$site_id, onaUnmatch$tole_name, onaUnmatch$temple_name), 'html', table.attr='class="data_table"', col.names = c("ID", "Tole Name", "Temple Name"))
 ```
@@ -164,15 +168,13 @@ knitr::kable(data.frame(onaUnmatch$site_id, onaUnmatch$tole_name, onaUnmatch$tem
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-$('.data_table').DataTable({
-"bFilter": true,
-"bLengthChange": false,
-"iDisplayLength": 30,
-});
-$("div.toolbar").html('Kathmandu');
-});
-
+	$(document).ready(function() {
+		$('.data_table').DataTable({
+			"bFilter": false,
+			"bLengthChange": false,
+			"iDisplayLength": 30
+		});
+	});
 
 </script>
 </html>
