@@ -179,7 +179,7 @@ knitr::kable(filter (pruschaRemaning , district == "Bhaktapur"), 'html', table.a
 <div style="margin-top:80px; margin-bottom: 20px">
 <h4>List of IDs in Ona Survey Not Found in Pruscha Inventory</h4>
 ```{r, echo=FALSE, message=FALSE}
-knitr::kable(data.frame(onaUnmatch$site_id, onaUnmatch$tole_name, onaUnmatch$temple_name), 'html', table.attr='class="data_table"', col.names = c("ID", "Tole Name", "Temple Name"))
+knitr::kable(data.frame(onaUnmatch$site_id, onaUnmatch$tole_name, onaUnmatch$temple_name), 'html', table.attr='class="data_table_not_included"', col.names = c("ID", "Tole Name", "Temple Name"))
 ```
 
 
@@ -202,7 +202,13 @@ $('.data_table').DataTable({
 "bLengthChange": false,
 "iDisplayLength": 30,
 });
-$("div.toolbar").html('Kathmandu');
+
+$('.data_table_not_included').DataTable({
+"bFilter": true,
+"bLengthChange": false,
+"iDisplayLength": 30,
+});
+
 });
 
 
