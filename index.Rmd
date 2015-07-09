@@ -78,7 +78,7 @@ matchSummary$Completion = ((matchSummary$Matched/matchSummary$Total)*100)
 <div>
 ####Percentage Completed According to Pruscha Dataset
 ```{r, echo=FALSE, message=FALSE}
-knitr::kable(matchSummary,col.names = c("District", "Accesed","Total Number in Pruscha","Percentage Complete"))
+knitr::kable(matchSummary,col.names = c("District", "Assessed","Total Number in Pruscha","Percentage Complete"))
 ```
 
 ```{r, echo=FALSE, message=FALSE}
@@ -97,7 +97,7 @@ pruschaRemaning = filter (pruscha, ! pruscha$id %in% match$site_id)
 
 
 <div id="list_div" style="margin-top: 50px">
-####List of Sites Yet to be Assesed
+####List of Sites Yet to be Assessed
 
 
 <div class="row">
@@ -145,7 +145,7 @@ knitr::kable(filter (pruschaRemaning , district == "Bhaktapur"), 'html', table.a
 
 </div>
 <div style="margin-top:80px; margin-bottom: 20px">
-<h4>List of ID's in Ona Survey Not Found in Pruscha Inventory</h4>
+<h4>List of IDs in Ona Survey Not Found in Pruscha Inventory</h4>
 ```{r, echo=FALSE, message=FALSE}
 knitr::kable(data.frame(onaUnmatch$site_id, onaUnmatch$tole_name, onaUnmatch$temple_name), 'html', table.attr='class="data_table"', col.names = c("ID", "Tole Name", "Temple Name"))
 ```
