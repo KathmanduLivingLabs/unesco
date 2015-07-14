@@ -12,7 +12,7 @@ echo "New = $newLastSubmission"
 
 if [ "$oldLastSubmission" == "$newLastSubmission" ]
 then
-	echo "hello"
+	echo "Nothing to update"
 else
 	log=/home/aakash/unesco-tracking/log.txt 
 	projLoc=/home/aakash/unesco-tracking/index.Rmd
