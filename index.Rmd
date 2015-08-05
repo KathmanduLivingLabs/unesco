@@ -1,6 +1,6 @@
 ---
 title: "UNESCO Submission Tracking"
-date: "generated on `r date()`"
+date: "Updated on `r date()`"
 output: 
   html_document:
     css: style.css 

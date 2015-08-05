@@ -87,3 +87,5 @@ List of 2
 
 /usr/bin/pandoc index.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash-implicit_figures --output index.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /usr/local/lib/R/site-library/rmarkdown/rmd/h/default.html --css style.css --variable 'theme:bootstrap' --include-in-header /tmp/RtmpGpytgB/rmarkdown-str6eb16567d003.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --no-highlight --variable highlightjs=/usr/local/lib/R/site-library/rmarkdown/rmd/h/highlight 
 > 
+[gh-pages 9dc0e06] Compiled on: 2015-07-14 01:04:39
+ 4 files changed, 4 insertions(+), 4 deletions(-)

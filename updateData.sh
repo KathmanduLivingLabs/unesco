@@ -4,8 +4,8 @@ cd /home/aakash/unesco-tracking/
 oldLastSubmission=`node getLastSubmission.js`
 echo "Old = $oldLastSubmission"
 
-#curl -X GET https://ona.io/api/v1/forms/49501 >formDetails.json
-curl -X GET -u "klltesting:klltesting" https://ona.io/api/v1/forms/65829 >formDetails.json
+curl -X GET https://ona.io/api/v1/forms/49501 >formDetails.json
+#curl -X GET -u "klltesting:klltesting" https://ona.io/api/v1/forms/65829 >formDetails.json
 
 newLastSubmission=`node getLastSubmission.js`
 echo "New = $newLastSubmission"
